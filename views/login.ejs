@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+<style>
+  h3 {
+    padding-bottom: 10px;
+  }
+
+  .sign-up-form input {
+    margin-bottom: 5px;
+  }
+
+  .sign-up-form button i {
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="container-fluid d-flex h-100 align-items-center">
+  <div
+    class="
+      col-lg-4
+      offset-lg-4
+      col-md-6
+      offset-md-3
+      col-sm-8
+      offset-sm-2
+      align-middle
+    "
+  >
+    <div class="bg-white rounded shadow px-3 py-3 text-center">
+      <h3>Please Login</h3>
+      <form class="sign-up-form">
+        <input
+          class="form-control"
+          type="email"
+          id="log-in-email"
+          name="email"
+          placeholder="Email Address"
+        />
+        <input
+          class="form-control"
+          type="password"
+          id="log-in-pasword"
+          name="password"
+          placeholder="Password"
+        />
+        <button class="btn btn-primary w-100" onclick="loginApi()">
+          SUBMIT<i class="bi bi-caret-right-fill"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

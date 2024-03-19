@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<style>
+  h3 {
+    padding-bottom: 10px;
+  }
+
+  .sign-up-form input {
+    margin-bottom: 5px;
+  }
+
+  .sign-up-form button i {
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="container-fluid d-flex h-100 align-items-center">
+  <div
+    class="
+      col-lg-8
+      offset-lg-2
+      col-md-10
+      offset-md-1
+      col-sm-10
+      offset-sm-1
+      align-middle
+    "
+  >
+    <div class="bg-white rounded shadow px-3 py-1 mb-2 text-center">
+      <h3 class="pt-2">Project Secret Token</h3>
+      <textarea class="form-control mb-3" id="join-meeting-link" rows="3" disabled ></textarea>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+    document.getElementById('join-meeting-link').value = "<%= joinMeetingLink %>"
+</script>
+<%- include('partials/footer') %>

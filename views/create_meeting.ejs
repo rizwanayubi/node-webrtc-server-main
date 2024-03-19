@@ -1,0 +1,115 @@
+<%- include('partials/header') %>
+<style>
+  h3 {
+    padding-bottom: 10px;
+  }
+
+  .sign-up-form input {
+    margin-bottom: 5px;
+  }
+
+  .sign-up-form button i {
+    font-size: 0.9rem;
+  }
+</style>
+
+<div class="container-fluid d-flex h-100 align-items-center">
+  <div
+    class="
+      col-lg-8
+      offset-lg-2
+      col-md-10
+      offset-md-1
+      col-sm-10
+      offset-sm-1
+      align-middle
+    "
+  >
+    <div class="bg-white rounded shadow px-3 py-1 mb-2 text-center">
+      <h3 class="pt-2">Project Secret Token</h3>
+      <input class="form-control mb-3" id="project-token" disabled />
+    </div>
+
+    <div class="bg-white rounded shadow px-3 py-4 text-center">
+      <h3>Create New Meeting</h3>
+      <form class="sign-up-form" method="POST" action="/createMeeting">
+        <input
+          class="form-control"
+          type="text"
+          id="projectToken"
+          name="projectToken"
+          placeholder="Your Secret Token"
+        />
+        <input
+          class="form-control"
+          type="text"
+          id="meetingName"
+          name="meetingName"
+          placeholder="Meeting Name"
+        />
+        <input
+          class="form-control"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Host Name"
+        />
+        <input
+          class="form-control"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email Address"
+        />
+        <button type="submit" class="btn btn-primary w-100">
+          SUBMIT<i class="bi bi-caret-right-fill"></i>
+        </button>
+      </form>
+
+      <button
+        class="btn btn-white w-100 mt-2 font-weight-bold text-primary"
+        type="button"
+        data-toggle="collapse"
+        data-target="#createMeetingApi"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Post Api for Integration
+      </button>
+      <div class="collapse border px-2" id="createMeetingApi">
+        <h4 class="pt-2">Create Meeting Api</h4>
+        <div class="text-left">
+          <label>Create Api Endpoint</label>
+          <input class="form-control mb-3" id="create-api" disabled />
+          <label>Api Body</label>
+          <textarea class="form-control" id="json-area" rows="6" disabled>
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+  const user = "<%= user %>";
+  const api = "<%= createMeetingApi %>";
+  var body = "<%= createMeetingApi.boby %>";
+  // const endpoint = "<%= createMeetingApi.endpoint %>";
+
+  console.log("<%= createMeetingApi.body.meetingName %>");
+
+  document.getElementById("project-token").value = "<%= project.token %>";
+  document.getElementById("create-api").value =
+    "<%= createMeetingApi.endpoint %>";
+
+  var apiBody = {
+    projectToken: "<%= project.token %>",
+    meetingName: "<<%= createMeetingApi.body.meetingName %>>",
+    name: "<<%= createMeetingApi.body.name %>>",
+    email: "<<%= createMeetingApi.body.email %>>",
+    userProjectId: "<<%= createMeetingApi.body.userProjectId %>>",
+  };
+
+  var textedJson = JSON.stringify(apiBody, undefined, 2);
+  document.getElementById("json-area").value = textedJson;
+</script>
+<%- include('partials/footer') %>

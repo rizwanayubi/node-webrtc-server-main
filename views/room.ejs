@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+<div class="main">
+  <div class="main__left" id="main__left">
+    <div class="main__videos">
+      <div id="video-grid" class="row"></div>
+    </div>
+    <div class="main__controls">
+      <div class="main__controls__block">
+        <div
+          onclick="muteUnmute()"
+          id="mute-audio"
+          class="main__controls__button main__mute_button"
+        >
+          <i class="bi bi-mic-fill"></i>
+          <span>Mute</span>
+        </div>
+        <div
+          onclick="videoPlayStop()"
+          id="stop-video"
+          class="main__controls__button main__video_button"
+        >
+          <i class="bi bi-camera-video-fill"></i>
+          <span>Stop Video</span>
+        </div>
+        <div
+          id="end_meeting"
+          class="main__controls__button main__video_button end__call_button"
+        >
+          <i class="bi bi-telephone-fill"></i>
+          <span>End Meeting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main__right" id="main__right">
+    <div class="main__header d-flex align-items-center justify-content-between">
+      <h6>Notes</h6>
+      <button class="btn notes_save__btn btn-sm btn-success" onclick="saveNotes()">
+        <i class="bi bi-check-all"></i>
+      </button>
+    </div>
+    <div class="main__chat_window">
+      <textarea id="notes_input"></textarea>
+    </div>
+  </div>
+
+  <!-- <div class="main__right">
+    <div class="main__header">
+      <h6>ChatBox</h6>
+    </div>
+    <div class="main__chat_window">
+      <ul class="messages"></ul>
+    </div>
+    <div class="main__message_container">
+      <input id="chat_message" type="text" placeholder="Type message here..." />
+    </div>
+  </div> -->
+</div>
+
+<script defer>
+  const ROOM_ID = "<%= roomId %>";
+  const PEER_ID = "<%= participant_id %>";
+  const PEER_NAME = "<%= participant %>";
+  const PEER_ROLE = "<%= participant_role %>";
+  const PEER_PROJECT_ID = "<%= participant_project_id %>";
+  const MEETING_ID = "<%= meetingId %>";
+  const NOTES = "<%= notes %>";
+</script>
+<script src="/socket.io/socket.io.js" defer></script>
+<script src="js/script.js" defer></script>
+<%- include('partials/footer') %>
